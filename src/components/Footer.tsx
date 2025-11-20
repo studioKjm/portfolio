@@ -1,4 +1,4 @@
-import { Github, Twitter, Youtube, Linkedin, Moon, Sun } from 'lucide-react'
+import { Github, X, Youtube, Linkedin, Moon, Sun } from 'lucide-react'
 import { useTheme } from '../contexts/ThemeContext'
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
     {
       name: 'X (Twitter)',
       url: 'https://x.com/gimjimi35646202?s=21',
-      icon: Twitter,
+      icon: X,
     },
     {
       name: 'YouTube',
