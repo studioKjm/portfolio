@@ -1,0 +1,101 @@
+---
+description: git-workflow
+alwaysApply: false
+---
+# Git Workflow Rules
+
+## Branch Strategy
+
+### Branch Roles
+- **main**: Production branch - always stable and deployable
+- **develop**: Development branch - all daily work happens here
+
+### Workflow
+1. **Daily Development**: Work on `develop` branch
+   ```bash
+   git checkout develop
+   git pull origin develop
+   # Make changes, commit, push
+   ```
+
+2. **Production Deployment**: Merge `develop` to `main` **ONLY on local machine** after testing
+   ```bash
+   # ⚠️ IMPORTANT: Always merge on LOCAL machine, never on server
+   git checkout main
+   git pull origin main  # Ensure local main is up to date
+   git merge develop     # Merge develop into main
+   git push origin main  # Push merged main to remote
+   ```
+
+3. **Server (EC2)**: Only use `main` branch, **read-only, pull-only**
+   ```bash
+   # ⚠️ IMPORTANT: Server should NEVER merge or commit
+   git checkout main
+   git pull origin main  # Only pull, never merge or commit
+   # Test the pulled code
+   # After testing, switch back to develop locally for continued work
+   ```
+
+## Commit Message Convention
+
+Follow conventional commits format:
+
+```
+<type>: <description>
+```
+
+### Types
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code formatting (no functional changes)
+- `refactor`: Code refactoring
+- `test`: Test additions/modifications
+- `chore`: Build config, package management, etc.
+- `hotfix`: Urgent production fix
+
+### Examples
+```
+feat: Add dashboard chart component
+fix: Resolve CSRF token error on login
+refactor: Improve API endpoint structure
+docs: Update deployment guide
+hotfix: Fix critical payment processing bug
+```
+
+## Key Principles
+
+1. **develop = Development/Testing**
+   - All daily work on `develop`
+   - Test thoroughly before merging to `main`
+
+2. **main = Production**
+   - Always stable and deployable code
+   - Only merge after testing
+   - **Merge ONLY happens on local machine, never on server**
+
+3. **Server = Read-Only, Pull-Only**
+   - Server only uses `git pull origin main`
+   - **NEVER merge on server** (no `git merge` commands)
+   - **NEVER commit directly on server**
+   - Server is for testing only, not for Git operations
+
+4. **Local = Work Space & Merge Point**
+   - All modifications happen locally
+   - All merges (develop → main) happen locally
+   - Push after testing and merging
+   - After server testing, switch back to `develop` locally for continued work
+
+## Workflow Summary
+
+```
+Local Development:
+  develop branch → commit → push → (test locally)
+
+Server Testing:
+  Local: merge develop → main → push
+  Server: pull main → test
+
+Continue Development:
+  Local: switch back to develop → continue work
+```

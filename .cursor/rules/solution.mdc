@@ -1,0 +1,48 @@
+# Solution Documentation Rule
+
+When a problem is successfully resolved during project development, the user will mention this file using `@solution.mdc`. When mentioned, you must:
+
+1. **Document the solution** in `docs/05-troubleshooting.md` under an appropriate section or create a new section if needed.
+
+2. **Include the following information** in the documentation:
+   - **What**: Clear description of the problem
+   - **Why**: Root cause analysis - why did this problem occur?
+   - **When**: When did the problem occur? (date, time, or context)
+   - **Where**: Where did the problem occur? (specific file, service, component, environment)
+   - **How**: Step-by-step solution with commands, code changes, or procedures
+   - **Prevention**: How to prevent this issue in the future (if applicable)
+
+3. **Format the entry** as follows:
+   ```markdown
+   ### [Problem Title]
+   
+   **Date**: YYYY-MM-DD
+   **Context**: Brief context of when/where this occurred
+   
+   **Problem**: 
+   - Description of the issue
+   - Error messages or symptoms
+   
+   **Root Cause**:
+   - Why this problem occurred
+   - Technical explanation
+   
+   **Solution**:
+   ```bash
+   # Commands or steps taken
+   ```
+   
+   **Files Changed**:
+   - `path/to/file1` - Description of changes
+   - `path/to/file2` - Description of changes
+   
+   **Prevention**:
+   - How to avoid this issue in the future
+   - Best practices or checks to implement
+   ```
+
+4. **Add the entry** to the most appropriate section in `05-troubleshooting.md`, or create a new section if the problem doesn't fit existing categories.
+
+5. **Maintain chronological order** - add new entries at the end of the relevant section, or at the end of the document if it's a new category.
+
+6. **Be specific and actionable** - future readers should be able to understand and apply the solution.

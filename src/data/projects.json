@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "CoinCogi",
+    "description": "글로벌 가상자산 변동률 실시간 분석 서비스",
+    "demoUrl": "https://coincogi.com",
+    "githubUrl": null,
+    "gifUrl": "/coincogi.gif",
+    "technologies": ["Python", "Django", "DRF", "Redis", "PostgreSQL", "Next.js"],
+    "isMain": true
+  },
+  {
+    "id": 2,
+    "name": "CapitalFlow",
+    "description": "글로벌 자본 이동 시각화 및 분석 시스템",
+    "demoUrl": null,
+    "githubUrl": "https://github.com/studioKjm/graduate",
+    "gifUrl": "/assets/capitalflow-demo.gif",
+    "technologies": ["Python", "Django", "React", "D3.js", "PostgreSQL"],
+    "isMain": true
+  }
+]
+

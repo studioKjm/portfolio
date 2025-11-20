@@ -1,0 +1,309 @@
+# 📌 **PRD – Portfolio**
+
+**Platform: GitHub Pages**
+
+**Title: Backend Based Fullstack Developer Portfolio**
+
+---
+
+# 1. 개요 (Overview)
+
+해당 포트폴리오는 **백엔드 중심의 풀스택 개발자(Backend Based Fullstack Developer)**로서의 역량을 직관적이고 시각적으로 전달하기 위한 정적 웹 기반 포트폴리오이다.
+
+GitHub Pages로 배포하며, **빠른 로딩, 높은 가독성, 생동감 있는 UI, GIF 기반 프로젝트 소개, 스크롤 모션**, 그리고 **성장 기록(커밋 그래프 + 연도별 활동)**을 통해 면접관과 임원에게 즉시 신뢰를 확보하는 것을 목표로 한다.
+
+---
+
+# 2. 문제 정의 (Problem Statement)
+
+면접관과 임원이 겪는 대표적 문제:
+
+1. 포트폴리오가 길고 지루하며 핵심을 빠르게 파악하기 어려움
+2. 기술 스택을 나열식으로만 표현해 숙련도를 판단하기 어려움
+3. 백엔드 중심인지, 프론트 가능한지 명확히 보이지 않음
+4. 프로젝트 설명은 많지만 "동작 화면"이 없어 이해가 느림
+5. 개발자의 지속성(커밋 활동), 연도별 성장 흐름이 보이지 않음
+6. 전반적으로 UI 생동감이 부족해 인상에 남지 않음
+
+본 프로젝트는 이러한 문제를 개선하기 위해 **구조적 단순함 + 강한 시각적 임팩트 + 개발자 성향 및 실무 역량을 빠르게 전달하는 UI**를 구축한다.
+
+---
+
+# 3. 목표 (Goals)
+
+### 핵심 목표
+
+- “**Backend Based Fullstack Developer**” 정체성 명확히 전달
+- GIF 기반 프로젝트 카드로 **단 몇 초 만에 프로젝트 이해 가능**
+- 기술 스택을 **게이지 UI(숙련도 시각화)**로 표현
+- 스크롤 시 자연스러운 모션(Scroll Reveal) 적용 → 생동감 및 고급 느낌 제공
+- GitHub Commit Graph + 연도별 Timeline으로 **성장성 / 일관성** 증명
+- GitHub Pages 기반으로 빠르게 배포 및 유지보수 가능
+- 모바일·PC 모두 최적화
+
+---
+
+# 4. 타깃 유저 (Target Users)
+
+### 1) 기술면접관
+
+- 프로젝트 동작 화면(GIF)로 빠른 이해
+- 스킬 숙련도 게이지로 정확한 역량 파악
+- Commit Graph & Timeline → 성장성 확인
+
+### 2) 임원/관리자(HR)
+
+- 직관적 UI + 깔끔한 구성 선호
+- 개발 성향과 일하는 방식 확인 가능
+
+---
+
+# 5. 기능 요구사항 (Functional Requirements)
+
+---
+
+## 📌 5.1 Hero 섹션 (페이지 최상단)
+
+### 구성 요소
+
+- 프로필 사진(적당한 크기, 정중하지만 존재감 있게)
+- 메인 타이틀: **Backend Based Fullstack Developer**
+- 핵심 강점 3가지 요약
+- CTA 버튼 (Projects / GitHub / Resume)
+
+### 애니메이션
+
+- 텍스트와 프로필 이미지가 **Soft Fade-in + Lift-up** 형태로 등장
+- 과도한 모션 금지
+
+---
+
+## 📌 5.2 상단 프로젝트 섹션 (주력 프로젝트 캐러셀)
+
+### 특징
+
+- **오른쪽 드래그(수평 스와이프) 캐러셀 구조**
+- PC: 마우스 드래그 + 화살표 버튼
+- 모바일: 터치 스와이프
+- Skeleton 로딩 적용
+
+### 카드 구성 (필수)
+
+1. **짧은 GIF / WebM (3~5초, 용량 최적화)**
+2. 프로젝트명
+3. 한 줄 소개
+4. 기술 스택 아이콘 (최소 3개까지)
+
+### 우선순위
+
+캐러셀 첫 2개는 **주력 프로젝트**로 고정:
+
+### 1) CoinCogi
+
+- Demo: [https://coincogi.com](https://coincogi.com/)
+- GIF: 대시보드 실시간 데이터 업데이트 화면
+- 1줄 소개: “글로벌 가상자산 변동률 실시간 분석 서비스”
+
+### 2) CapitalFlow
+
+- GitHub: https://github.com/studioKjm/graduate
+- GitHub: https://github.com/studioKjm/Fitzy
+- GIF: 국가별 자본 흐름 시각화 맵 동작
+- 1줄 소개: “글로벌 자본 이동 시각화 및 분석 시스템”
+
+### 나머지 프로젝트
+
+캐러셀 뒤쪽에 배치하여 “주력 → 기타”의 선명한 구조 유지
+
+---
+
+## 📌 5.3 기술 스택 섹션 (숙련도 게이지 UI + 아이콘 + 카테고리 구분)
+
+### 카테고리
+
+- Backend
+- Frontend
+- DevOps / Infra
+- Tools
+
+### UI 요구사항
+
+- 각 기술은 **아이콘 필수**
+- 숙련도 표시: **게이지 바(Gauge Bar)**
+- 4단계(예시): Expert / Proficient / Intermediate / Basic
+- 정렬 기준: **실제 빈도 + 실무 사용 경험 + 전문성**
+
+### 예시 (구체적 예시 포함)
+
+### **Backend**
+
+- Python 🟩🟩🟩🟩 (Expert)
+- Django 🟩🟩🟩🟩
+- DRF 🟩🟩🟩🟩
+- Redis 🟩🟩🟩🟩
+- PostgreSQL 🟩🟩🟩⬜
+
+### **Frontend**
+
+- Next.js 🟩🟩🟨⬜
+- React 🟩🟩🟨⬜
+- Tailwind 🟩🟨⬜⬜
+
+### **DevOps**
+
+- Docker 🟩🟩🟩⬜
+- AWS EC2/Nginx 🟩🟩🟩⬜
+- GitHub Actions 🟩🟩🟨⬜
+
+### **Tools**
+
+- Figma 🟩⬜⬜⬜
+- Streamlit 🟩⬜⬜⬜
+
+---
+
+## 📌 5.4 GitHub Commit Graph (Grass) 섹션
+
+### 구성
+
+- 페이지 중단 영역에 배치
+- GitHub 공식 Activity Graph 또는 shields.io
+- 클릭 시 GitHub 프로필로 이동
+
+---
+
+## 📌 5.5 Scroll Reveal Motion (생동감 강조)
+
+### 요구사항
+
+- 섹션 제목, 주요 요소가 **스크롤 시 자연스럽게 등장**
+- Fade-in, Slide-up, Delay 0.1~0.2s
+- GSAP ScrollTrigger, Framer Motion, 또는 IntersectionObserver 활용
+- 과도한 모션 금지 (사용처 엄격히 제한)
+
+---
+
+## 📌 5.6 연도별 활동 타임라인 (Timeline Section)
+
+### 위치
+
+- 페이지 하단부의 메인 섹션 중 하나
+
+### UI 요구사항
+
+- 좌측: 연도 표시
+- 우측: 해당 연도의 주요 활동
+- 라인(세로축) 또는 카드형 UI
+- 페이드인 + 가벼운 좌/우 슬라이드 애니메이션
+
+### 예시
+
+```
+2024
+ - CoinCogi 운영 및 기능 확장
+ - AWS 인프라 구성, Docker 최적화
+ - CapitalFlow 완성 및 배포
+
+2023
+ - Django/DRF 기반 프로젝트 연속 개발
+ - GitHub 활동 증가
+
+2022
+ - 전공 시작
+ - Python 및 CS 기초
+
+```
+
+---
+
+## 📌 5.7 Contact 섹션 (최하단 상위)
+
+### 포함 요소
+
+- Email
+- GitHub
+- Resume(Notion)
+- LinkedIn(선택)
+- CSS로 단순 배치 (폼 불필요)
+
+---
+
+## 📌 5.8 Footer 섹션 (페이지 최하위, 신규 요구사항 반영)
+
+### Footer 구성
+
+왼쪽 영역:
+
+- 짧은 문구(예시)
+    - “Built with passion and purpose.”
+    - 또는
+    - “Crafted by Jimin Kim, 2025”
+
+오른쪽 영역:
+
+- 소셜 링크 4종
+    - GitHub
+    - X(Twitter)
+    - YouTube
+    - LinkedIn
+- 아이콘 형태로 배치
+- hover 시 미세한 scale 효과
+
+### UI 기준
+
+- 심플 + 명확
+- 색상 대비 유지
+- PC/모바일 동일하게 깔끔한 구조 유지
+
+---
+
+# 6. 비기능 요구사항 (Non-Functional Requirements)
+
+### 성능
+
+- GIF/WebM Lazy loading
+- 정적 사이트 빌드 최적화
+- FCP 1초 내
+
+### 접근성
+
+- 큰 폰트, 고대비, alt태그
+- 모바일 반응형 설계
+
+### 유지보수
+
+- 기술, 프로젝트 정보 JSON 분리
+- 컴포넌트화된 React/Vite 구조
+- ESLint + Prettier
+
+---
+
+# 7. 위험 요소 및 대응
+
+| 위험 요소 | 설명 | 대응 |
+| --- | --- | --- |
+| GIF 과체중 | 모바일 렉 발생 | WebM 변환 + 1~2MB 이하 |
+| 인터랙션 과도 | 성능 및 가독성 저해 | 핵심 요소에만 제한적 적용 |
+| 타임라인 과도 | 정보 과포화 | 연도당 활동 2~4개로 제한 |
+| 게이지 UI 난잡 | 디자인 과부하 | 동일 스타일 규칙 적용 |
+
+---
+
+# 8. 로드맵 (Roadmap)
+
+### v1.0 (MVP)
+
+- Hero
+- GIF 프로젝트 캐러셀
+- 기술 스택 게이지
+- Commit Graph
+- Timeline
+- Contact
+- Footer
+- GitHub Pages 배포
+
+### v1.1
+
+- 다크모드 지원
+- 프로젝트 상세 모달
+- GIF 최적화

@@ -1,0 +1,89 @@
+{
+  "backend": [
+    {
+      "name": "Python",
+      "level": 4,
+      "levelLabel": "Expert",
+      "icon": "🐍"
+    },
+    {
+      "name": "Django",
+      "level": 4,
+      "levelLabel": "Expert",
+      "icon": "🎸"
+    },
+    {
+      "name": "DRF",
+      "level": 4,
+      "levelLabel": "Expert",
+      "icon": "⚡"
+    },
+    {
+      "name": "Redis",
+      "level": 4,
+      "levelLabel": "Expert",
+      "icon": "🔴"
+    },
+    {
+      "name": "PostgreSQL",
+      "level": 3,
+      "levelLabel": "Proficient",
+      "icon": "🐘"
+    }
+  ],
+  "frontend": [
+    {
+      "name": "Next.js",
+      "level": 2,
+      "levelLabel": "Intermediate",
+      "icon": "▲"
+    },
+    {
+      "name": "React",
+      "level": 2,
+      "levelLabel": "Intermediate",
+      "icon": "⚛️"
+    },
+    {
+      "name": "Tailwind",
+      "level": 1,
+      "levelLabel": "Basic",
+      "icon": "💨"
+    }
+  ],
+  "devops": [
+    {
+      "name": "Docker",
+      "level": 3,
+      "levelLabel": "Proficient",
+      "icon": "🐳"
+    },
+    {
+      "name": "AWS EC2/Nginx",
+      "level": 3,
+      "levelLabel": "Proficient",
+      "icon": "☁️"
+    },
+    {
+      "name": "GitHub",
+      "level": 2,
+      "levelLabel": "Intermediate",
+      "icon": "⚙️"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Figma",
+      "level": 1,
+      "levelLabel": "Basic",
+      "icon": "🎨"
+    },
+    {
+      "name": "Streamlit",
+      "level": 1,
+      "levelLabel": "Basic",
+      "icon": "📊"
+    }
+  ]
+}
+
