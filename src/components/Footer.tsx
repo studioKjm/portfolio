@@ -11,12 +11,12 @@ const Footer = () => {
     },
     {
       name: 'X (Twitter)',
-      url: 'https://twitter.com/yourusername',
+      url: 'https://x.com/gimjimi35646202?s=21',
       icon: Twitter,
     },
     {
       name: 'YouTube',
-      url: 'https://youtube.com/@yourusername',
+      url: 'https://www.youtube.com/@김지민-p6d',
       icon: Youtube,
     },
     {
