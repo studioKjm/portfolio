@@ -21,7 +21,7 @@ const Footer = () => {
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/yourprofile',
+      url: 'https://www.linkedin.com/in/지민-김-566941391',
       icon: Linkedin,
     },
   ]
