@@ -15,8 +15,18 @@
     "description": "글로벌 자본 이동 시각화 및 분석 시스템",
     "demoUrl": null,
     "githubUrl": "https://github.com/studioKjm/graduate",
-    "gifUrl": "/assets/capitalflow-demo.gif",
+    "gifUrl": "/capitalflow.gif",
     "technologies": ["Python", "Django", "React", "D3.js", "PostgreSQL"],
+    "isMain": true
+  },
+  {
+    "id": 3,
+    "name": "Fitzy",
+    "description": "MBTI 기반 AI 코디 추천 서비스",
+    "demoUrl": null,
+    "githubUrl": "https://github.com/studioKjm/Fitzy",
+    "gifUrl": "/fitzy.gif",
+    "technologies": ["Python", "Streamlit", "YOLO", "Fashion AI"],
     "isMain": true
   }
 ]

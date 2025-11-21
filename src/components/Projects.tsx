@@ -5,6 +5,8 @@ import projectsData from '../data/projects.json'
 
 // GIF 이미지 import (개발 환경에서 정상 작동하도록)
 import coincogiGif from '/coincogi.gif'
+import capitalflowGif from '/capitalflow.gif'
+import fitzyGif from '/fitzy.gif'
 
 const Projects = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -97,6 +99,10 @@ const Projects = () => {
                     src={
                       project.name === 'CoinCogi'
                         ? coincogiGif
+                        : project.name === 'CapitalFlow'
+                        ? capitalflowGif
+                        : project.name === 'Fitzy'
+                        ? fitzyGif
                         : project.gifUrl.startsWith('/')
                         ? project.gifUrl
                         : `/${project.gifUrl}`

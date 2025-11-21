@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
-import { Mail, Github, FileText, Linkedin } from 'lucide-react'
+import { Mail, Github, FileText, Linkedin, Copy, Check } from 'lucide-react'
+import { useState } from 'react'
 import contactData from '../data/contact.json'
 
 const Contact = () => {
   const contact = contactData
+  const [emailCopied, setEmailCopied] = useState(false)
 
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
@@ -12,13 +14,18 @@ const Contact = () => {
     transition: { duration: 0.6 },
   }
 
+  // 이메일 복사 함수
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(contact.email)
+      setEmailCopied(true)
+      setTimeout(() => setEmailCopied(false), 2000)
+    } catch (err) {
+      console.error('이메일 복사 실패:', err)
+    }
+  }
+
   const contactLinks = [
-    {
-      name: 'Email',
-      url: `mailto:${contact.email}`,
-      icon: Mail,
-      color: 'bg-blue-500 hover:bg-blue-600',
-    },
     {
       name: 'GitHub',
       url: contact.github,
@@ -54,6 +61,35 @@ const Contact = () => {
             프로젝트나 협업에 관심이 있으시다면 언제든지 연락주세요.
           </p>
 
+          {/* 이메일 텍스트 + 복사 버튼 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0 }}
+            className="mb-6 flex items-center justify-center gap-3"
+          >
+            <div className="flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
+              <Mail size={20} className="text-gray-700 dark:text-gray-300" />
+              <span className="text-gray-900 dark:text-white font-medium text-lg">
+                {contact.email}
+              </span>
+              <button
+                onClick={copyEmail}
+                className="ml-2 p-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white transition-colors flex items-center justify-center"
+                aria-label="이메일 복사"
+                title="이메일 복사"
+              >
+                {emailCopied ? (
+                  <Check size={18} className="text-white" />
+                ) : (
+                  <Copy size={18} className="text-white" />
+                )}
+              </button>
+            </div>
+          </motion.div>
+
+          {/* 다른 링크 버튼들 */}
           <div className="flex flex-wrap justify-center gap-4">
             {contactLinks.map((link, index) => {
               const Icon = link.icon
@@ -66,7 +102,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: (index + 1) * 0.1 }}
                   className={`${link.color} text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2`}
                 >
                   <Icon size={20} />
