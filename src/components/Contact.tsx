@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
 import { Mail, Github, FileText, Linkedin, Copy, Check } from 'lucide-react'
 import { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 import contactData from '../data/contact.json'
 
 const Contact = () => {
+  const { t } = useLanguage()
   const contact = contactData
   const [emailCopied, setEmailCopied] = useState(false)
 
@@ -55,10 +57,10 @@ const Contact = () => {
       <div className="max-w-4xl mx-auto">
         <motion.div {...fadeInUp} className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Get In Touch
+            {t('contact.title')}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-12 text-lg">
-            프로젝트나 협업에 관심이 있으시다면 언제든지 연락주세요.
+            {t('contact.description')}
           </p>
 
           {/* 이메일 텍스트 + 복사 버튼 */}
@@ -77,8 +79,8 @@ const Contact = () => {
               <button
                 onClick={copyEmail}
                 className="ml-2 p-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white transition-colors flex items-center justify-center"
-                aria-label="이메일 복사"
-                title="이메일 복사"
+                aria-label={t('contact.emailCopy')}
+                title={t('contact.emailCopy')}
               >
                 {emailCopied ? (
                   <Check size={18} className="text-white" />

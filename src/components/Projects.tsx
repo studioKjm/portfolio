@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, ExternalLink, Github, X, Info } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
 import projectsData from '../data/projects.json'
 
 // GIF 이미지 import (개발 환경에서 정상 작동하도록)
@@ -21,6 +22,7 @@ type Project = {
 }
 
 const Projects = () => {
+  const { t, language } = useLanguage()
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
@@ -45,6 +47,22 @@ const Projects = () => {
         window.removeEventListener('resize', checkScrollability)
       }
     }
+  }, [])
+
+  // 모든 프로젝트 이미지 미리 로드
+  useEffect(() => {
+    const preloadImages = [
+      coincogiGif,
+      capitalflowGif,
+      fitzyGif,
+    ]
+    preloadImages.forEach((src) => {
+      const link = document.createElement('link')
+      link.rel = 'preload'
+      link.as = 'image'
+      link.href = src
+      document.head.appendChild(link)
+    })
   }, [])
 
   // ESC 키로 팝업 닫기
@@ -85,7 +103,7 @@ const Projects = () => {
           {...fadeInUp}
           className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white"
         >
-          Featured Projects
+          {t('projects.title')}
         </motion.h2>
 
         <div className="relative">
@@ -133,7 +151,8 @@ const Projects = () => {
                     }
                     alt={`${project.name} demo`}
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading={index <= 1 ? 'eager' : 'lazy'}
+                    fetchPriority={index <= 1 ? 'high' : 'auto'}
                     onError={(e) => {
                       // 이미지 로드 실패 시 디버깅 정보 출력
                       const img = e.target as HTMLImageElement
@@ -155,7 +174,9 @@ const Projects = () => {
                   <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
                     {project.name}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    {language === 'ko' ? project.description : (project as any).descriptionEn || project.description}
+                  </p>
 
                   {/* 기술 스택 아이콘 */}
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -179,7 +200,7 @@ const Projects = () => {
                         className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
                       >
                         <ExternalLink size={16} />
-                        Demo
+                        {t('projects.demo')}
                       </a>
                     )}
                     {project.githubUrl && (
@@ -198,7 +219,7 @@ const Projects = () => {
                       className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                     >
                       <Info size={16} />
-                      Detail
+                      {t('projects.detail')}
                     </button>
                   </div>
                 </div>
@@ -264,14 +285,16 @@ const Projects = () => {
                 <div className="flex-1 overflow-y-auto p-6">
                   <div className="prose prose-gray dark:prose-invert max-w-none">
                     <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed text-base md:text-lg">
-                      {selectedProject.detail || '상세 정보가 없습니다.'}
+                      {language === 'ko' 
+                        ? selectedProject.detail || t('projects.modal.noDetail')
+                        : (selectedProject as any).detailEn || selectedProject.detail || t('projects.modal.noDetail')}
                     </p>
                   </div>
 
                   {/* 기술 스택 */}
                   <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
-                      사용 기술
+                      {t('projects.modal.tech')}
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.technologies.map((tech) => (
@@ -289,15 +312,15 @@ const Projects = () => {
                 {/* 푸터 */}
                 <div className="p-6 border-t border-gray-200 dark:border-gray-700 flex gap-3">
                   {selectedProject.demoUrl && (
-                    <a
-                      href={selectedProject.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
-                    >
-                      <ExternalLink size={16} />
-                      Demo
-                    </a>
+                      <a
+                        href={selectedProject.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                      >
+                        <ExternalLink size={16} />
+                        {t('projects.demo')}
+                      </a>
                   )}
                   {selectedProject.githubUrl && (
                     <a

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useTheme } from '../contexts/ThemeContext'
+import { useLanguage } from '../contexts/LanguageContext'
 import skillsData from '../data/skills.json'
 
 type Skill = {
@@ -15,6 +16,7 @@ type SkillsCategory = {
 
 const Skills = () => {
   const { theme } = useTheme()
+  const { t } = useLanguage()
   const skills = skillsData as SkillsCategory
 
   const fadeInUp = {
@@ -87,7 +89,7 @@ const Skills = () => {
           {...fadeInUp}
           className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white"
         >
-          Tech Stack
+          {t('skills.title')}
         </motion.h2>
 
         <div className="space-y-12">
@@ -98,7 +100,7 @@ const Skills = () => {
               transition={{ delay: categoryIndex * 0.1 }}
             >
               <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
-                {categoryLabels[category] || category}
+                {t(`skills.${category}` as any) || categoryLabels[category] || category}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {items.map((skill, index) => (

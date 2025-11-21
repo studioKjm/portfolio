@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useLanguage } from '../contexts/LanguageContext'
 import timelineData from '../data/timeline.json'
 
 type TimelineItem = {
@@ -7,6 +8,7 @@ type TimelineItem = {
 }
 
 const Timeline = () => {
+  const { t, language } = useLanguage()
   const timeline = timelineData as TimelineItem[]
 
   const fadeInUp = {
@@ -23,7 +25,7 @@ const Timeline = () => {
           {...fadeInUp}
           className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white"
         >
-          Timeline
+          {t('timeline.title')}
         </motion.h2>
 
         <div className="relative">
@@ -54,15 +56,20 @@ const Timeline = () => {
                 <div className="flex-1 pt-2 md:pt-0 md:ml-8">
                   <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-gray-900/50 hover:shadow-lg dark:hover:shadow-gray-900/70 transition-shadow">
                     <ul className="space-y-2">
-                      {item.activities.map((activity, activityIndex) => (
-                        <li
-                          key={activityIndex}
-                          className="text-gray-700 dark:text-gray-300 flex items-center gap-2"
-                        >
-                          <span className="text-primary-600 dark:text-primary-400 flex-shrink-0">•</span>
-                          <span className="leading-relaxed">{activity}</span>
-                        </li>
-                      ))}
+                      {item.activities.map((activity, activityIndex) => {
+                        const translatedActivity = language === 'ko' 
+                          ? activity 
+                          : t(`timeline.${item.year}.${activityIndex + 1}` as any) || activity
+                        return (
+                          <li
+                            key={activityIndex}
+                            className="text-gray-700 dark:text-gray-300 flex items-center gap-2"
+                          >
+                            <span className="text-primary-600 dark:text-primary-400 flex-shrink-0">•</span>
+                            <span className="leading-relaxed">{translatedActivity}</span>
+                          </li>
+                        )
+                      })}
                     </ul>
                   </div>
                 </div>

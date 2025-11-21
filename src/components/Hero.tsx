@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
 import { Github, FileText, ExternalLink } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
 // 프로필 이미지는 public 폴더에 위치해야 합니다
 // 또는 src/assets에 위치한 경우 import를 사용하세요
 import profileImage from '/profile.jpeg'
 
 const Hero = () => {
+  const { t } = useLanguage()
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -43,9 +45,9 @@ const Hero = () => {
           transition={{ delay: 0.1 }}
           className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white"
         >
-          Backend Based
+          {t('hero.subtitle')}
           <br />
-          <span className="text-primary-600 dark:text-primary-400">Fullstack Developer</span>
+          <span className="text-primary-600 dark:text-primary-400">{t('hero.title')}</span>
         </motion.h1>
 
         {/* 핵심 강점 */}
@@ -54,9 +56,9 @@ const Hero = () => {
           transition={{ delay: 0.2 }}
           className="mb-12 space-y-2 text-lg md:text-xl text-gray-600 dark:text-gray-300"
         >
-          <p>• 백엔드 아키텍처 설계 및 최적화</p>
-          <p>• 실시간 데이터 처리 및 분석 시스템 구축</p>
-          <p>• 프론트엔드 개발 및 사용자 경험 개선</p>
+          <p>• {t('hero.strength1')}</p>
+          <p>• {t('hero.strength2')}</p>
+          <p>• {t('hero.strength3')}</p>
         </motion.div>
 
         {/* CTA 버튼 */}
@@ -70,7 +72,7 @@ const Hero = () => {
             className="px-6 py-3 bg-primary-600 dark:bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors flex items-center gap-2"
           >
             <ExternalLink size={18} />
-            Projects
+            {t('hero.projects')}
           </a>
           <a
             href="https://github.com/studioKjm"
@@ -88,7 +90,7 @@ const Hero = () => {
             className="px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:border-gray-400 dark:hover:border-gray-500 transition-colors flex items-center gap-2"
           >
             <FileText size={18} />
-            Resume
+            {t('hero.resume')}
           </a>
         </motion.div>
       </div>
