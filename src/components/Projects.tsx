@@ -249,24 +249,21 @@ const Projects = () => {
       {/* 프로젝트 상세 정보 팝업 */}
       <AnimatePresence>
         {selectedProject && (
-          <>
-            {/* 배경 오버레이 */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedProject(null)}
-              className="fixed inset-0 bg-black/50 dark:bg-black/70 z-50 backdrop-blur-sm"
-            />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 dark:bg-black/70 backdrop-blur-sm"
+          >
             {/* 팝업 모달 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
               onClick={(e) => e.stopPropagation()}
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col"
             >
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col">
                 {/* 헤더 */}
                 <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
@@ -334,9 +331,8 @@ const Projects = () => {
                     </a>
                   )}
                 </div>
-              </div>
-            </motion.div>
-          </>
+              </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </section>

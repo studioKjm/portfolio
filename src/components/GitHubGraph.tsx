@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import { useTheme } from '../contexts/ThemeContext'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const GitHubGraph = () => {
   const { theme } = useTheme()
+  const { t } = useLanguage()
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -21,10 +23,10 @@ const GitHubGraph = () => {
       <div className="max-w-6xl mx-auto">
         <motion.div {...fadeInUp} className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white">
-            GitHub Activity
+            {t('github.title')}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-8">
-            지속적인 개발 활동과 성장 기록
+            {t('github.description')}
           </p>
 
           {/* GitHub Contribution Graph (잔디표) */}
@@ -78,7 +80,7 @@ const GitHubGraph = () => {
             className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors"
           >
             <ExternalLink size={18} />
-            GitHub 프로필 보기
+            {t('github.viewProfile')}
           </a>
         </motion.div>
       </div>

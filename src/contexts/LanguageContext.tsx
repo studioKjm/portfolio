@@ -56,6 +56,11 @@ const translations = {
     'contact.description': '프로젝트나 협업에 관심이 있으시다면 언제든지 연락주세요.',
     'contact.emailCopy': '이메일 복사',
     
+    // GitHub
+    'github.title': 'GitHub Activity',
+    'github.description': '지속적인 개발 활동과 성장 기록',
+    'github.viewProfile': 'GitHub 프로필 보기',
+    
     // Footer
     'footer.crafted': 'Crafted by Jimin Kim, 2025',
     'footer.lightMode': '라이트 모드로 전환',
@@ -107,6 +112,11 @@ const translations = {
     'contact.title': 'Get In Touch',
     'contact.description': 'Feel free to reach out if you are interested in projects or collaboration.',
     'contact.emailCopy': 'Copy Email',
+    
+    // GitHub
+    'github.title': 'GitHub Activity',
+    'github.description': 'Continuous development activities and growth records',
+    'github.viewProfile': 'View GitHub Profile',
     
     // Footer
     'footer.crafted': 'Crafted by Jimin Kim, 2025',
