@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ExternalLink, Github, X, Info } from 'lucide-react'
 import projectsData from '../data/projects.json'
 
 // GIF 이미지 import (개발 환경에서 정상 작동하도록)
@@ -8,10 +8,23 @@ import coincogiGif from '/coincogi.gif'
 import capitalflowGif from '/capitalflow.gif'
 import fitzyGif from '/fitzy.gif'
 
+type Project = {
+  id: number
+  name: string
+  description: string
+  demoUrl: string | null
+  githubUrl: string | null
+  gifUrl: string
+  technologies: string[]
+  isMain: boolean
+  detail?: string
+}
+
 const Projects = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   const checkScrollability = () => {
     if (scrollContainerRef.current) {
@@ -33,6 +46,17 @@ const Projects = () => {
       }
     }
   }, [])
+
+  // ESC 키로 팝업 닫기
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedProject) {
+        setSelectedProject(null)
+      }
+    }
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [selectedProject])
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -163,12 +187,19 @@ const Projects = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                       >
                         <Github size={16} />
                         GitHub
                       </a>
                     )}
+                    <button
+                      onClick={() => setSelectedProject(project as Project)}
+                      className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    >
+                      <Info size={16} />
+                      Detail
+                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -193,6 +224,98 @@ const Projects = () => {
           display: none;
         }
       `}</style>
+
+      {/* 프로젝트 상세 정보 팝업 */}
+      <AnimatePresence>
+        {selectedProject && (
+          <>
+            {/* 배경 오버레이 */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              className="fixed inset-0 bg-black/50 dark:bg-black/70 z-50 backdrop-blur-sm"
+            />
+            {/* 팝업 모달 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+                {/* 헤더 */}
+                <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                    {selectedProject.name}
+                  </h3>
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    aria-label="닫기"
+                  >
+                    <X size={24} className="text-gray-600 dark:text-gray-300" />
+                  </button>
+                </div>
+
+                {/* 내용 */}
+                <div className="flex-1 overflow-y-auto p-6">
+                  <div className="prose prose-gray dark:prose-invert max-w-none">
+                    <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed text-base md:text-lg">
+                      {selectedProject.detail || '상세 정보가 없습니다.'}
+                    </p>
+                  </div>
+
+                  {/* 기술 스택 */}
+                  <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
+                      사용 기술
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* 푸터 */}
+                <div className="p-6 border-t border-gray-200 dark:border-gray-700 flex gap-3">
+                  {selectedProject.demoUrl && (
+                    <a
+                      href={selectedProject.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                      Demo
+                    </a>
+                  )}
+                  {selectedProject.githubUrl && (
+                    <a
+                      href={selectedProject.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    >
+                      <Github size={16} />
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

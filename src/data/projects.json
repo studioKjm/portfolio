@@ -7,7 +7,8 @@
     "githubUrl": null,
     "gifUrl": "/coincogi.gif",
     "technologies": ["Python", "Django", "DRF", "Redis", "PostgreSQL", "Next.js"],
-    "isMain": true
+    "isMain": true,
+    "detail": "CoinCogi는 전 세계 가상자산의 실시간 변동률을 분석하고 시각화하는 서비스입니다.\n\n주요 기능:\n- 실시간 가상자산 가격 추적 및 변동률 분석\n- 다양한 차트와 그래프를 통한 시각화\n- 사용자 맞춤형 알림 설정\n- 글로벌 시장 트렌드 분석\n\n기술 스택:\n- 백엔드: Python, Django, Django REST Framework\n- 데이터베이스: PostgreSQL, Redis (캐싱)\n- 프론트엔드: Next.js\n- 실시간 데이터 처리 및 API 최적화\n\n이 프로젝트를 통해 대규모 데이터 처리, 실시간 업데이트, 그리고 사용자 경험 최적화에 대한 경험을 쌓았습니다."
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "githubUrl": "https://github.com/studioKjm/graduate",
     "gifUrl": "/capitalflow.gif",
     "technologies": ["Python", "Django", "React", "D3.js", "PostgreSQL"],
-    "isMain": true
+    "isMain": true,
+    "detail": "CapitalFlow는 글로벌 자본 이동을 시각화하고 분석하는 졸업 작품 프로젝트로, 장려상을 수상했습니다.\n\n주요 기능:\n- 세계 지도를 활용한 자본 흐름 시각화\n- 연도별, 분야별, 자본 타입별 필터링\n- 인터랙티브한 지도 탐색 및 데이터 분석\n- 다양한 시각화 모드 (색상, 흐름, 통합)\n\n기술 스택:\n- 백엔드: Python, Django\n- 프론트엔드: React\n- 데이터 시각화: D3.js\n- 데이터베이스: PostgreSQL\n\n이 프로젝트를 통해 복잡한 데이터 시각화, 지리적 데이터 처리, 그리고 사용자 인터랙션 설계에 대한 깊은 이해를 얻었습니다."
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "githubUrl": "https://github.com/studioKjm/Fitzy",
     "gifUrl": "/fitzy.gif",
     "technologies": ["Python", "Streamlit", "YOLO", "Fashion AI"],
-    "isMain": true
+    "isMain": true,
+    "detail": "Fitzy는 MBTI 성향을 기반으로 한 AI 코디 추천 서비스입니다.\n\n주요 기능:\n- YOLO를 활용한 의류 객체 인식\n- MBTI 성향 분석을 통한 개인화된 코디 추천\n- 사용자 선호도 학습 및 맞춤형 추천\n- 실시간 의류 분석 및 스타일 매칭\n\n기술 스택:\n- AI/ML: YOLO (객체 인식), Fashion AI\n- 프레임워크: Streamlit\n- 언어: Python\n\n이 프로젝트를 통해 컴퓨터 비전, 머신러닝 모델 통합, 그리고 사용자 맞춤형 추천 시스템 개발 경험을 쌓았습니다."
   }
 ]
 
