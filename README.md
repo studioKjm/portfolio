@@ -79,5 +79,8 @@ src/
 
 ## 📄 라이선스
 
-MIT
+Copyright (c) 2025 Jimin Kim. All Rights Reserved.
+
+이 프로젝트의 모든 저작권은 Jimin Kim에게 있습니다. 
+무단 사용, 복제, 배포를 금지합니다.
 

@@ -9,6 +9,8 @@
     "gifUrl": "/coincogi.gif",
     "technologies": ["Python", "Django", "DRF", "Redis", "PostgreSQL", "Next.js"],
     "isMain": true,
+    "projectType": "개인프로젝트",
+    "projectTypeEn": "Personal Project",
     "detail": "CoinCogi는 암호화폐 실시간 급등 알림 플랫폼(SaaS)으로, 4개 주요 거래소(Binance, Bybit, OKX, Kraken)의 가격을 15초 간격으로 모니터링하여 급등/급락 알림을 제공합니다.\n\n주요 기능:\n- 실시간 모니터링: 15초 간격으로 모든 거래소 모니터링, 평균 15초 내 알림 전송\n- 구독 플랜 시스템: Basic($13/월), Standard($20/월), Professional($35/월) 3단계 플랜\n- 다중 거래소 지원: Futures/Spot 데이터 수집 및 실시간 가격 추적\n- 사용자 인증: JWT 기반 인증, Google OAuth 소셜 로그인, 이메일 인증\n- 커스터마이징: Professional 플랜에서 변동성 임계값, 평균 변동성 배수 등 상세 설정 가능\n\n기술 스택:\n- 백엔드: Django 5.1.7, Django REST Framework, Gunicorn\n- 데이터베이스: PostgreSQL 13, Redis 7 (캐싱 및 상태 관리)\n- 백그라운드 작업: Celery (비동기 알림 처리)\n- 프론트엔드: Next.js 14, React 18, TypeScript, Tailwind CSS\n- 인프라: Docker, Nginx, AWS S3, Blue-Green 배포\n\n이 프로젝트를 통해 실시간 데이터 처리, 대규모 트래픽 처리, 구독 기반 SaaS 아키텍처 설계, 그리고 무중단 배포 시스템 구축 경험을 쌓았습니다.",
     "detailEn": "CoinCogi is a real-time cryptocurrency surge alert platform (SaaS) that monitors prices from 4 major exchanges (Binance, Bybit, OKX, Kraken) at 15-second intervals and provides surge/drop alerts.\n\nKey Features:\n- Real-time Monitoring: Monitors all exchanges at 15-second intervals, sends alerts within an average of 15 seconds\n- Subscription Plan System: 3-tier plans - Basic($13/month), Standard($20/month), Professional($35/month)\n- Multi-Exchange Support: Futures/Spot data collection and real-time price tracking\n- User Authentication: JWT-based authentication, Google OAuth social login, email verification\n- Customization: Professional plan allows detailed settings including volatility thresholds and average volatility multipliers\n\nTech Stack:\n- Backend: Django 5.1.7, Django REST Framework, Gunicorn\n- Database: PostgreSQL 13, Redis 7 (caching and state management)\n- Background Jobs: Celery (asynchronous notification processing)\n- Frontend: Next.js 14, React 18, TypeScript, Tailwind CSS\n- Infrastructure: Docker, Nginx, AWS S3, Blue-Green deployment\n\nThrough this project, I gained experience in real-time data processing, handling large-scale traffic, designing subscription-based SaaS architecture, and building zero-downtime deployment systems."
   },
@@ -22,6 +24,8 @@
     "gifUrl": "/capitalflow.gif",
     "technologies": ["Python", "Django", "React", "D3.js", "PostgreSQL"],
     "isMain": true,
+    "projectType": "졸업작품(장려상)",
+    "projectTypeEn": "Graduation Project (Encouragement Award)",
     "detail": "CapitalFlow는 글로벌 자본 이동을 시각화하고 분석하는 졸업 작품 프로젝트로, 장려상을 수상했습니다.\n\n주요 기능:\n- 세계 지도를 활용한 자본 흐름 시각화\n- 연도별, 분야별, 자본 타입별 필터링\n- 인터랙티브한 지도 탐색 및 데이터 분석\n- 다양한 시각화 모드 (색상, 흐름, 통합)\n\n기술 스택:\n- 백엔드: Python, Django\n- 프론트엔드: React\n- 데이터 시각화: D3.js\n- 데이터베이스: PostgreSQL\n\n이 프로젝트를 통해 복잡한 데이터 시각화, 지리적 데이터 처리, 그리고 사용자 인터랙션 설계에 대한 깊은 이해를 얻었습니다.",
     "detailEn": "CapitalFlow is a graduation project that visualizes and analyzes global capital flows, which received an encouragement award.\n\nKey Features:\n- Capital flow visualization using world maps\n- Filtering by year, sector, and capital type\n- Interactive map exploration and data analysis\n- Various visualization modes (color, flow, integrated)\n\nTech Stack:\n- Backend: Python, Django\n- Frontend: React\n- Data Visualization: D3.js\n- Database: PostgreSQL\n\nThrough this project, I gained deep understanding of complex data visualization, geographic data processing, and user interaction design."
   },
@@ -35,6 +39,8 @@
     "gifUrl": "/fitzy.gif",
     "technologies": ["Python", "Streamlit", "YOLO", "Fashion AI"],
     "isMain": true,
+    "projectType": "팀프로젝트",
+    "projectTypeEn": "Team Project",
     "detail": "Fitzy는 MBTI 성향을 기반으로 한 AI 코디 추천 서비스입니다.\n\n주요 기능:\n- YOLO를 활용한 의류 객체 인식\n- MBTI 성향 분석을 통한 개인화된 코디 추천\n- 사용자 선호도 학습 및 맞춤형 추천\n- 실시간 의류 분석 및 스타일 매칭\n\n기술 스택:\n- AI/ML: YOLO (객체 인식), Fashion AI\n- 프레임워크: Streamlit\n- 언어: Python\n\n이 프로젝트를 통해 컴퓨터 비전, 머신러닝 모델 통합, 그리고 사용자 맞춤형 추천 시스템 개발 경험을 쌓았습니다.",
     "detailEn": "Fitzy is an AI outfit recommendation service based on MBTI personality types.\n\nKey Features:\n- Clothing object recognition using YOLO\n- Personalized outfit recommendations through MBTI personality analysis\n- User preference learning and customized recommendations\n- Real-time clothing analysis and style matching\n\nTech Stack:\n- AI/ML: YOLO (object recognition), Fashion AI\n- Framework: Streamlit\n- Language: Python\n\nThrough this project, I gained experience in computer vision, machine learning model integration, and personalized recommendation system development."
   }

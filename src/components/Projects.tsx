@@ -171,9 +171,18 @@ const Projects = () => {
 
                 {/* 프로젝트 정보 */}
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
-                    {project.name}
-                  </h3>
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {project.name}
+                    </h3>
+                    {(project as any).projectType && (
+                      <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">
+                        {language === 'ko' 
+                          ? (project as any).projectType 
+                          : (project as any).projectTypeEn || (project as any).projectType}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
                     {language === 'ko' ? project.description : (project as any).descriptionEn || project.description}
                   </p>
