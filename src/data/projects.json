@@ -19,7 +19,7 @@
     "name": "CapitalFlow",
     "description": "글로벌 자본 이동 시각화 및 분석 시스템",
     "descriptionEn": "Global capital flow visualization and analysis system",
-    "demoUrl": null,
+    "demoUrl": "https://capitalflow-frontend.onrender.com/",
     "githubUrl": "https://github.com/studioKjm/graduate",
     "gifUrl": "/capitalflow.gif",
     "technologies": ["Python", "Django", "React", "D3.js", "PostgreSQL"],
